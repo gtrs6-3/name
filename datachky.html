@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-theme');
+});
+
+    </script>
+    <style>
+        .dark-theme {
+    background: #121212;
+    color: #ffffff;
+}
+@media (max-width: 768px) {
+    .car-card p {
+        display: none;
+    }
+
+    .car-card:hover p {
+        display: block;
+    }
+}
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .showroom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .car-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 280px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .car-card:nth-child(2) {
+            transform: rotateY(180deg);
+        }
+
+        .car-card:hover {
+            transform: scale(1.07);
+            box-shadow: 0 10px 20px rgba(255, 34, 0, 0.3);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid #ffffff;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .car-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #ffffff;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 12px 20px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 15px auto;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #ff6f61, #ff856b);
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 111, 97, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 80%;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #ff453a, #ff5e4d);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .showroom {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Showroom</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="theme-toggle">Switch Theme</button>
+    
+    <div class="showroom">
+        <!-- Карточки автомобилей будут добавляться с помощью JS -->
+    </div>
+
+    <script>
+        const cars = [
+            {
+                title: 'Audi RS 6 Avant',
+                imgSrc: 'https://avatars.mds.yandex.net/get-vertis-journal/4466156/abt-audi-rs-6-johann-abt-signature-edition.jpg_1623420853486/orig',
+                description: '4.0L V8, 600 HP, AWD',
+                price: '$120,000'
+            },
+            {
+               title: 'Audi RS 7 Sportback',
+                imgSrc: 'https://static.baza.drom.ru/drom/1620820182060_bulletin.jpg',
+                description: '4.0L V8, 600 HP, AWD',
+                price: '$130,000'
+            },
+            {
+                title: 'BMW M5 E39',
+                imgSrc: 'https://i.ytimg.com/vi/stHKvqPtFMQ/maxresdefault.jpg' ,
+                description: '4.9L V8, 400 HP, RWD',
+                price: '$50,000'
+            },
+            {
+                title: 'BMW M5 E60',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=8f90be388b670f8af021a36a0bc738ba34026def-5229540-images-thumbs&n=13' ,
+                description: '5.0L V10, 507 HP, RWD',
+                price: '$60,000'
+            },
+            {
+                title: 'Mercedes-AMG CLS 53 4MATIC+',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=c734ab45516562335037a3a479e85550_l-6446516-images-thumbs&n=13',
+                description: '3.0L I6, 435 HP, AWD',
+                price: '$80,000'
+            },
+            {
+                title: 'Mercedes-AMG E 63 S',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=7dcdbfe8e83a3b726f3b53b315bcffda19a81f31-9097894-images-thumbs&n=13',
+                description: '4.0L V8, 612 HP, AWD',
+                price: '$100,000'
+            },
+            {
+                title: 'bentley continental gt',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=f89be418d8761ef275b237a102496fb3_l-10414649-images-thumbs&n=13',
+                description: '6.0L W12, 635 HP, AWD',
+                price: '$200,000'
+            },
+            {
+                title: 'bentley flying spur',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=ceef7788d821b1eae7fd675f5df35ce4_l-4773559-images-thumbs&n=13',
+                description: '6.0L W12, 635 HP, AWD',
+                price: '$250,000'
+            },
+            {
+                title: 'Aston Martin DB11',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=c9b310d4d018c6633a051979968cde4c_l-12319966-images-thumbs&n=13',
+                description: '5.2L V12, 630 HP, RWD',
+                price: '$250,000'
+            },
+            {
+                title: 'Aston martin vantage',
+                imgSrc: 'https://www.exclusiveautomotivegroup.com/galleria_images/1466/1466_p3_l.jpg',
+                description: '4.0L V8, 510 HP, RWD',
+                price: '$150,000'
+            },
+            {
+                title: 'Rolls-Royce Wraith',
+                imgSrc: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/ed86f666591371.5b1acdc52d341.jpg',
+                description: '6.6L V12, 632 HP, RWD',
+                price: '$300,000'
+            },
+            {
+                title: 'Rolls-Royce Ghost',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=515888c0a8c52b7f7514f390f808c434_l-4817585-images-thumbs&n=13',
+                description: '6.6L V12, 563 HP, RWD',
+                price: '$350,000'
+            },
+            {
+                title: 'Porsche 911 Turbo S',
+                imgSrc: 'https://avatars.mds.yandex.net/i?id=782b443e752786951728e3d92df0bde6_l-9181142-images-thumbs&n=13',
+                description: '3.8L F6, 650 HP, AWD',
+                price: '$200,000'
+            },
+            {
+                title: 'Porsche Cayman Turbo S 718',
+                imgSrc: 'https://drivemag.com/wp-content/uploads/2017/04/-DSC5188-4714.jpeg',
+                description: '2.5L F4, 350 HP, RWD',
+                price: '$100,000'
+            }
+
+            
+            
+            
+            // Добавьте другие автомобили по аналогии
+        ];
+
+        const showroom = document.querySelector('.showroom');
+        cars.forEach((car, index) => {
+            const carCard = document.createElement('div');
+            carCard.classList.add('car-card');
+            carCard.innerHTML = `
+                <img src="${car.imgSrc}" alt="${car.title}" loading="lazy">
+                <div class="car-title">${car.title}</div>
+                <p>${car.description}</p>
+                <p>${car.price}</p>
+                <a href="#" class="button">View more</a>
+            `;
+            carCard.style.animationDelay = `${index * 0.2}s`;
+            showroom.appendChild(carCard);
+        });
+    </script>
+</body>
+</html>
